@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authControllers = require('../controllers/auth/authControllers');
 //validate if correct data has been sent or not
-const Joi = require('joi');
+const Joi = require('joi'); // schema description language and data validator for js
 const validator = require('express-joi-validation').createValidator({});
 
 const registerSchema = Joi.object({
