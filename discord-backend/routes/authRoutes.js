@@ -4,6 +4,7 @@ const authControllers = require('../controllers/auth/authControllers');
 //validate if correct data has been sent or not
 const Joi = require('joi'); // schema description language and data validator for js
 const validator = require('express-joi-validation').createValidator({});
+const auth = require('../middleware/auth');
 
 const registerSchema = Joi.object({
   username: Joi.string().min(3).max(12).required(),
@@ -26,4 +27,9 @@ router.post(
   authControllers.controllers.postLogin
 );
 
+//test route to verify if our middleware is working
+
+router.get('/test', auth, (req, res) => {
+  res.send('request passed');
+});
 module.exports = router;
